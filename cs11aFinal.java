@@ -8,15 +8,15 @@ public class Methods{
     String cards = scanner.nextLine(); //asking for the cards
     int n = 0;
     String[] userinput = cards.split("\\s+");
-    String[] player1 = new String [52];
+    String[] player1 = new String [51];
     String[] subPlayer1 = Arrays.copyOfRange(player1, 0, n);
-    String[] player2 = new String [52];
+    String[] player2 = new String [51];
     String[] subPlayer2 = Arrays.copyOfRange(player2, 0, n);
-    String[] player3 = new String [52];
+    String[] player3 = new String [51];
     String[] subPlayer3 = Arrays.copyOfRange(player3, 0, n);
-    String[] player4 = new String [52];
+    String[] player4 = new String [51];
     String[] subPlayer4 = Arrays.copyOfRange(player4, 0, n);
-    String[] cardsPlayed = new String [52];
+    String[] cardsPlayed = new String [51];
     String[] subCardsPlayed = Arrays.copyOfRange(cardsPlayed, 0, n);
     int numPlayer1=0;
     int numPlayer2=0;
@@ -96,8 +96,6 @@ public static void bsCaller (){
     int bsCaller = scanner.nextInt();
   }
 }
-
-
 
 
 
