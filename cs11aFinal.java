@@ -43,19 +43,19 @@ public class Methods{
     for (int i = 0; i<middleSet.length; i++){
       if(i<=12){
         for (int a = 0; a<12; a++){
-        player1[a]=middleSet[i];
+          player1[a]=middleSet[i];
         }
       }else if(i>12 && i<=25){
         for (int b = 0; b<12; b++){
-        player2[b]=middleSet[i];
+          player2[b]=middleSet[i];
         }
       }else if(i>25 && i<=38){
         for (int c = 0; c<12; c++){
-        player3[c]=middleSet[i];
+          player3[c]=middleSet[i];
         }
       }else if(i>38 && i<=51){
         for (int d = 0; d<12; d++){
-        player4[d]=middleSet[i];
+          player4[d]=middleSet[i];
         }
       }
     }
