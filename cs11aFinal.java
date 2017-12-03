@@ -142,7 +142,7 @@ keep track of who's turn it is during the game
       int bsCaller = scanner.nextInt();
     }
   }
-  
+
 /**
   declaring variable -- Karrina
 */
@@ -156,4 +156,7 @@ public class cs11aFinal{
     int[] player3= new int[52];
     int[] player4 = new int[52];
   }
+}
+public static void pass(){
+    int midcount = 0;
 }
