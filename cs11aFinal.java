@@ -5,9 +5,8 @@ import java.util.Arrays;
 public class Methods{
   public static void main(String[] args){
     int userNumber = scanner.nextInt();//asking for the which player this is
-    String cards = scanner.nextLine(); //asking for the cards
+    String userinput = scanner.nextLine(); //asking for the cards
     int n = 0;
-    String[] userinput = cards.split("\\s+");
     String[] player1 = new String [51];
     String[] subPlayer1 = Arrays.copyOfRange(player1, 0, n);
     String[] player2 = new String [51];
@@ -57,29 +56,29 @@ public static void turns(int userNumber){
 store cards into the player's array and update the count
 */
 public static void trackCards1 (String[] player1, String[] subPlayer1, int count1){
-  int n = 1 + subPlayer1.length;
-  player1[n] = userinput;
+  int n = subPlayer1.length - 1;
+  player1[n] = 0;
   count1++;
   trackTable();
 }
 
 public static void trackCards2 (String[] player2, String[] subPlayer2, int count2){
-  int n = 1 + subPlayer2.length;
-  player2[n] = userinput;
+  int n = subPlayer2.length - 1;
+  player2[n] = 0;
   count2++;
   trackTable();
 }
 
 public static void trackCards3 (String[] player3, String[] subPlayer3, int count3){
-  int n = 1 + subPlayer3.length;
-  player3[n] = userinput;
+  int n = subPlayer3.length - 1;
+  player3[n] = 0;
   count3++;
   trackTable();
 }
 
 public static void trackCards4 (String[] player4, String[] subPlayer4, int count4){
-  int n = 1 + subPlayer4.length;
-  player4[n] = userinput;
+  int n = subPlayer4.length - 1;
+  player4[n] = 0;
   count4++;
   trackTable();
 }
