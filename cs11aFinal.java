@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class cs11aFinal{
   public static void main(String[] args){
 
@@ -9,15 +7,12 @@ import java.util.Arrays;
 
 public class Methods{
   public static void main(String[] args){
+
+  public static void declareVariables(){
     int userNumber = scanner.nextInt();//asking for the which player this is
     String userinput = scanner.nextLine(); //asking for the cards
     int n = 0;
-<<<<<<< HEAD
-    String[] player1 = new String [51];
-=======
-    String[] userinput = cards.split("\\s+");
     String[] player1 = new String [52];
->>>>>>> a9e61f8716190e4d809b96b627b4d1bec7d01afa
     String[] subPlayer1 = Arrays.copyOfRange(player1, 0, n);
     String[] player2 = new String [52];
     String[] subPlayer2 = Arrays.copyOfRange(player2, 0, n);
@@ -36,8 +31,7 @@ public class Methods{
     int count3=subPlayer3.length;
     int count4=subPlayer4.length;
     int countT=0;
-
-
+   }
   }
 }
 
@@ -132,52 +126,3 @@ public static void bsCaller (){
     int bsCaller = scanner.nextInt();
   }
 }
-
-
-
-/**
-  declaring variable -- Karrina
-*/
-
-public class cs11aFinal{
-  public static void main(String[] args){
-    System.out.println("Hello World");
-    int[] middleSet = {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13};
-    int[] player1 = new int[52];
-    int[] player2 = new int[52];
-    int[] player3= new int[52];
-    int[] player4 = new int[52];
-
-    shuffle(middleSet);
-    distribute(middleSet);
-    }
-  }
-
-/**
-  Shuffling the elements in middleSet with Fisher–Yates shuffle
-*/
-  public static void shuffle(int[] middleSet) {
-    int index, temp;
-    Random random = new Random();
-    for (int i = middleSet.length - 1; i > 0; i--)
-    {
-        index = random.nextInt(i + 1);
-        temp = middleSet[index];
-        middleSet[index] = middleSet[i];
-        middleSet[i] = temp;
-    }
-  }
-
-
-
-/**
-  BS Not Effictive
-*/
-  public static void bsFail(int[] middleSet, int[] player1, int[] player2, int[] player3, int[] player4){
-    //use instance method would be hella easier
-  }
-
-}
-
-/* for (int i = 0; i < middleSet.length; i++){
-     System.out.print(middleSet[i] + " ");
