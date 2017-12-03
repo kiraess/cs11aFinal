@@ -1,3 +1,6 @@
+public class cs11aFinal{
+  public static void main(String[] args){
+
 import java.util.Scanner;
 import lib.StringArray;
 import java.util.Arrays;
@@ -7,15 +10,20 @@ public class Methods{
     int userNumber = scanner.nextInt();//asking for the which player this is
     String userinput = scanner.nextLine(); //asking for the cards
     int n = 0;
+<<<<<<< HEAD
     String[] player1 = new String [51];
+=======
+    String[] userinput = cards.split("\\s+");
+    String[] player1 = new String [52];
+>>>>>>> a9e61f8716190e4d809b96b627b4d1bec7d01afa
     String[] subPlayer1 = Arrays.copyOfRange(player1, 0, n);
-    String[] player2 = new String [51];
+    String[] player2 = new String [52];
     String[] subPlayer2 = Arrays.copyOfRange(player2, 0, n);
-    String[] player3 = new String [51];
+    String[] player3 = new String [52];
     String[] subPlayer3 = Arrays.copyOfRange(player3, 0, n);
-    String[] player4 = new String [51];
+    String[] player4 = new String [52];
     String[] subPlayer4 = Arrays.copyOfRange(player4, 0, n);
-    String[] cardsPlayed = new String [51];
+    String[] cardsPlayed = new String [52];
     String[] subCardsPlayed = Arrays.copyOfRange(cardsPlayed, 0, n);
     int numPlayer1=0;
     int numPlayer2=0;
@@ -30,6 +38,33 @@ public class Methods{
 
   }
 }
+
+/**
+  Distributing 13 elements per player
+*/
+  public static void distribute(int[] middleSet) {
+    //use instance method would be easier to distribute 13 elements to each array
+    for (int i = 0; i<middleSet.length; i++){
+      if(i<=12){
+        for (int a = 0; a<12; a++){
+          player1[a]=middleSet[i];
+        }
+      }else if(i>12 && i<=25){
+        for (int b = 0; b<12; b++){
+          player2[b]=middleSet[i];
+        }
+      }else if(i>25 && i<=38){
+        for (int c = 0; c<12; c++){
+          player3[c]=middleSet[i];
+        }
+      }else if(i>38 && i<=51){
+        for (int d = 0; d<12; d++){
+          player4[d]=middleSet[i];
+        }
+      }
+    }
+
+  }
 
 /**
 keep track of who's turn it is during the game
@@ -95,58 +130,3 @@ public static void bsCaller (){
     int bsCaller = scanner.nextInt();
   }
 }
-
-
-
-import java.util.Random;
-
-public class cs11aFinal{
-  public static void main(String[] args){
-    System.out.println("Hello World");
-    int[] middleSet = {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13};
-    int[] player1 = new int[52];
-    int[] player2 = new int[52];
-    int[] player3= new int[52];
-    int[] player4 = new int[52];
-
-    shuffle(middleSet);
-    distribute(middleSet);
-    }
-  }
-
-/**
-  Shuffling the elements in middleSet with Fisher–Yates shuffle
-*/
-  public static void shuffle(int[] middleSet) {
-    int index, temp;
-    Random random = new Random();
-    for (int i = middleSet.length - 1; i > 0; i--)
-    {
-        index = random.nextInt(i + 1);
-        temp = middleSet[index];
-        middleSet[index] = middleSet[i];
-        middleSet[i] = temp;
-    }
-  }
-
-/**
-  Distributing 13 elements per player
-*/
-  public static void distribute(int[] middleSet) {
-    //use instance method would be easier to distribute 13 elements to each array
-    for (int i = 1; )
-
-
-  }
-
-/**
-  BS Not Effictive
-*/
-  public static void bsFail(int[] middleSet, int[] player1, int[] player2, int[] player3, int[] player4){
-    //use instance method would be hella easier
-  }
-
-}
-
-/* for (int i = 0; i < middleSet.length; i++){
-     System.out.print(middleSet[i] + " ");
