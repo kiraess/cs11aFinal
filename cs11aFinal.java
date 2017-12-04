@@ -207,3 +207,10 @@ keep track of who's turn it is during the game
       int bsCaller = scanner.nextInt();
     }
   }
+<<<<<<< HEAD
+=======
+}
+public static void pass(){
+    int midcount = 0;
+}
+>>>>>>> 610f650a3df69ff5dc50318fb929356dc46e36e7
