@@ -22,6 +22,9 @@ public class BSCardGame {
       for (int i = 1; i <= 4; i++){
         showCards(i, player1, player2, player3, player4, cardsPlayed);
         chooseCard(i, player1, player2, player3, player4, cardsPlayed);
+        say
+        bs
+        effective
       }
 
     }while(false);
@@ -115,7 +118,7 @@ public class BSCardGame {
     } else if (userNumber==3){
       userInput = input.nextInt();
       checkCard(userInput, userNumber, player1, player2, player3, player4, cardsPlayed);
-    } else {
+    } else{
       userInput = input.nextInt();
       checkCard(userInput, 4, player1, player2, player3, player4, cardsPlayed);
     }
@@ -269,5 +272,37 @@ public class BSCardGame {
       return n;
     }
 
+    /**
+    check if someone wants to call BS
+    if BS is called, then check who calls
+    */
+    ublic static void BScaller(){
+      TextIO.putf("Call Bullshit?%n");
+      boolean call = TextIO.getlnBoolean();
+      if (call==true){
+        numBSCaller();
+      } else {
+        break;
+      }
+    }
+
+    /**
+    check who calls BS
+    determines who gets the card
+    */
+    public static void numBScaller(){
+      TextIO.putf("Who called Bullshit? Enter the number of the player%n");
+      int userNumber = TextIO.getInt();
+      BS();
+    }
+
+    /**
+    ask user what card he/she played
+    */
+    public static int sayCard(){
+      TextIO.putf("What card did you just put in the middle?");
+      int sayCard = TextIO.getInt();
+      return sayCard;
+    }
 
   }//class
