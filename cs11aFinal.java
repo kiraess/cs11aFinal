@@ -293,7 +293,6 @@ public class BSCardGame {
     public static void numBScaller(){
       TextIO.putf("Who called Bullshit? Enter the number of the player%n");
       int userNumber = TextIO.getInt();
-      BS();
     }
 
     /**
@@ -304,5 +303,89 @@ public class BSCardGame {
       int sayCard = TextIO.getInt();
       return sayCard;
     }
+
+    public static void checkBS(){
+      int y;
+      y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+      if(sayCard=cardsPlayed[y]){
+        BSTrue();
+      }else{
+        BSFalse();
+      }
+    }
+
+    public static void BSFalse(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+      int x;
+      int y;
+      int count=0;
+      if(userNumber==1){ //caller
+        x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
+        y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+        for(int i=x+1;i<=x+y;i++){
+          player1[i] = cardsPlayed[count];
+          count++;
+        }
+
+      }else if(userNumber==2){
+        x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
+        y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+        for(int i=x+1;i<=x+y;i++){
+          player2[i] = cardsPlayed[count];
+          count++;
+        }
+      }else if(userNumber==3){
+        x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
+        y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+        for(int i=x+1;i<=x+y;i++){
+          player3[i] = cardsPlayed[count];
+          count++;
+        }
+      }else if(userNumber==4){
+        x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
+        y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+        for(int i=x+1;i<=x+y;i++){
+          player4[i] = cardsPlayed[count];
+          count++;
+        }
+      }
+    }
+    }
+
+    public static void BSTrue(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+      int x;
+      int y;
+      int count=0;
+      userNumber=userNumber-1;
+      if(userNumber==1){ //player that is called
+        x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
+        y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+        for(int i=x+1;i<=x+y;i++){
+          player1[i] = cardsPlayed[count];
+          count++;
+        }
+      }else if(userNumber==2){
+          x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
+          y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+          for(int i=x+1;i<=x+y;i++){
+            player2[i] = cardsPlayed[count];
+            count++;
+          }
+      }else if(userNumber==3){
+          x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
+          y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+          for(int i=x+1;i<=x+y;i++){
+            player3[i] = cardsPlayed[count];
+            count++;
+          }
+      }else if(userNumber==4){
+          x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
+          y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+          for(int i=x+1;i<=x+y;i++){
+            player4[i] = cardsPlayed[count];
+            count++;
+          }
+      }
+    }
+
 
   }//class
