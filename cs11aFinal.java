@@ -14,6 +14,10 @@ public class BSCardGame {
     int[] player3 = new int [52];
     int[] player4 = new int [52];
     int[] cardsPlayed = {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13};
+    boolean play;
+
+    TextIO.putf("Ready to play?");
+    play = TextIO.getlnBoolean();
 
     shuffle(cardsPlayed);
     distribute(cardsPlayed, player1, player2, player3, player4);
@@ -22,12 +26,9 @@ public class BSCardGame {
       for (int i = 1; i <= 4; i++){
         showCards(i, player1, player2, player3, player4, cardsPlayed);
         chooseCard(i, player1, player2, player3, player4, cardsPlayed);
-        say
-        bs
-        effective
       }
-
-    }while(false);
+      playAgain(play);
+    }while(play=true);
 
   }//main
 
@@ -303,6 +304,49 @@ public class BSCardGame {
       TextIO.putf("What card did you just put in the middle?");
       int sayCard = TextIO.getInt();
       return sayCard;
+    }
+
+    public static void printRules(){
+      TextIO.putf("Welcome to the world of Bullshit - the best game you will ever play %n");
+      TextIO.putf("Here is the rule: %n");
+      TextIO.putf("You must have 4 players for this game.%n");
+      TextIO.putf("If you don't have enough players, drag some random people from the street to play with you.%n");
+      TextIO.putf("If you have way too many players, try to take turns or tell them how you love them and let them leave.%n");
+      TextIO.putf("Each player will get 13 cards at the beginning and the cards will be shown to the player once all cards are distributed.%n");
+      TextIO.putf("Starting from player number 1, the game requires each players to put 1 card on the table.%n");
+      TextIO.putf("The card should be facing down.%n");
+      TextIO.putf("The player can choose to lie about the kind of the card played.%n");
+      TextIO.putf("If you believe that the player is lying, you can choose to call Bullshit.%n");
+      TextIO.putf("If the player is lying, he/she gets all the cards on the table.%n");
+      TextIO.putf("if not, the player who call Bullshit takes all the cards.%n");
+      TextIO.putf("The winner will be whoever run out the cards first.%n");
+      TextIO.putf("Good luck!!%n");
+    }
+
+    public static void winner(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4){
+      int i = 0;
+      if (userNumber==1){
+        if (player1[i]==0){
+          TextIO.putf("Player 1 wins!!");
+        }
+      } else if (userNumber==2){
+        if (player2[i]==0){
+          TextIO.putf("Player 2 wins!!");
+        }
+      } else if (userNumber==3){
+        if (player3[i]==0){
+          TextIO.putf("Player 3 wins!!");
+        } 
+      } else {
+        if (player4[i]==0){
+          TextIO.putf("Player 4 wins!!");
+        }
+      }
+    }
+
+    public static void playAgain(boolean play){
+      TextIO.putf("Do you wanna play again?");
+      play = TextIO.getlnBoolean();
     }
 
   }//class
