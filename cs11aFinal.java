@@ -22,9 +22,9 @@ public class BSCardGame {
       for (int i = 1; i <= 4; i++){
         showCards(i, player1, player2, player3, player4, cardsPlayed);
         chooseCard(i, player1, player2, player3, player4, cardsPlayed);
-        say
-        bs
-        effective
+        sayCard();
+        numBSCaller();
+        checkBS();
       }
 
     }while(false);
@@ -308,9 +308,9 @@ public class BSCardGame {
       int y;
       y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
       if(sayCard=cardsPlayed[y]){
-        BSTrue();
+        BSTrue(userNumber, player1, player2, player3, player4, cardsPlayed);
       }else{
-        BSFalse();
+        BSFalse(userNumber, player1, player2, player3, player4, cardsPlayed);
       }
     }
 
