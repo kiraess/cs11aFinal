@@ -136,53 +136,53 @@ public class BSCardGame {
     int x;
     int count = 0;
     if (userNumber==1){
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      try{
-        for (int i = 0; player1[i] == userInput; i++){
-          count++;
-          toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
-        }
-      } catch(Exception e){
-          System.out.println("Choose a card from your set");
-          System.out.println("P1");
-          chooseCard(userNumber, player1, player2, player3, player4, cardsPlayed);
-      }
-    } else if (userNumber==2){
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      try{
-        for (int i = 0; player2[i] == userInput; i++){
-          count++;
-          toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
-        }
-      } catch(Exception e){
-          System.out.println("Choose a card from your set");
-          System.out.println("P2");
-          chooseCard(userNumber, player1, player2, player3, player4, cardsPlayed);
-      }
-    } else if (userNumber==3){
-        try{
-          for (int i = 0; player3[i] == userInput; i++){
-            count++;
-            toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
-          }
-        } catch(Exception e){
-            System.out.println("Choose a card from your set");
-            System.out.println("P3");
-            chooseCard(userNumber, player1, player2, player3, player4, cardsPlayed);
-      }
-    } else {
-        try{
-          for (int i = 0; player4[i] == userInput; i++){
-            count++;
-            toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
-          }
-        } catch(Exception e){
-            System.out.println("Choose a card from your set");
-            System.out.println("P4");
-            chooseCard(userNumber, player1, player2, player3, player4, cardsPlayed);
+    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+    for_loop:
+    for (int i = 0; i< x; i++){
+      count++;
+      if (player1[i] == userInput){
+        toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+        break for_loop;
         }
       }
     }
+
+    if (userNumber==2){
+    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+    for_loop:
+    for (int i = 0; i< x; i++){
+      count++;
+      if (player2[i] == userInput){
+        toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+        break for_loop;
+        }
+      }
+    }
+
+    if (userNumber==3){
+    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+    for_loop:
+    for (int i = 0; i< x; i++){
+      count++;
+      if (player3[i] == userInput){
+        toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+        break for_loop;
+        }
+      }
+    }
+
+  if (userNumber==4){
+  x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+  for_loop:
+  for (int i = 0; i< x; i++){
+    count++;
+    if (player4[i] == userInput){
+      toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+      break for_loop;
+      }
+    }
+  }
+    } // method
 
   /**
     move number to middle
@@ -281,7 +281,7 @@ public class BSCardGame {
     check if someone wants to call BS
     if BS is called, then check who calls
     */
-    ublic static void BScaller(){
+    public static void BScaller(){
       TextIO.putf("Call Bullshit?%n");
       boolean call = TextIO.getlnBoolean();
       if (call==true){
