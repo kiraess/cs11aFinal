@@ -276,7 +276,7 @@ public class BSCardGame {
     check if someone wants to call BS
     if BS is called, then check who calls
     */
-    ublic static void BScaller(){
+    public static void BScaller(){
       TextIO.putf("Call Bullshit?%n");
       boolean call = TextIO.getlnBoolean();
       if (call==true){
