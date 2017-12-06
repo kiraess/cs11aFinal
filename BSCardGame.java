@@ -29,7 +29,6 @@ public class BSCardGame {
         chooseCard(i, player1, player2, player3, player4, cardsPlayed);
         sayCard();
         numBSCaller();
-        checkBS();
       }
       playAgain(play);
     }while(play=true);
@@ -286,6 +285,7 @@ public class BSCardGame {
       boolean call = TextIO.getlnBoolean();
       if (call==true){
         numBSCaller();
+        checkBS(userNumber, player1, player2, player3, player4, cardsPlayed);
       } else {
         break;
       }
