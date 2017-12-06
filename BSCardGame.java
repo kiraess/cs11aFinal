@@ -24,16 +24,29 @@ public class BSCardGame {
     distribute(cardsPlayed, player1, player2, player3, player4);
 
     do{
-      for (int i = 1; i <= 4; i++){
-        showCards(i, player1, player2, player3, player4, cardsPlayed);
-        chooseCard(i, player1, player2, player3, player4, cardsPlayed);
-        sayCard();
-        numBSCaller();
+      while(turn==true){
+        for (int i = 1; i <= 4; i++){
+          showCards(i, player1, player2, player3, player4, cardsPlayed);
+          chooseCard(i, player1, player2, player3, player4, cardsPlayed);
+          sayCard();
+          numBSCaller();
+        }
+        nextTurn(turn);
       }
+      winner(userNumber, player1, player2, player3, player4, cardsPlayed);
       playAgain(play);
-    }while(play=true);
+    }while(play==true);
 
   }//main
+
+  /**
+  asking the user if they are ready for the next turn
+  */
+  public static boolean nextTurn(){
+    TextIO.putf("Now all four of you have played one card. Ready for the next turn?%n");
+    boolean turn = TextIO.getlnBoolean();
+    return turn;
+  }
 
   /**
    Shuffling the elements in cardsPlayed[] with Fisher–Yates shuffle
@@ -280,7 +293,7 @@ public class BSCardGame {
     check if someone wants to call BS
     if BS is called, then check who calls
     */
-  public static void BScaller(){
+  public static void BScaller(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       TextIO.putf("Call Bullshit?%n");
       boolean call = TextIO.getlnBoolean();
       if (call==true){
@@ -299,6 +312,7 @@ public class BSCardGame {
       TextIO.putf("Who called Bullshit? Enter the number of the player%n");
       int userNumber = TextIO.getInt();
     }
+
 
     /**
     ask user what card he/she played
@@ -347,12 +361,13 @@ public class BSCardGame {
       }
     }
 
-  public static void playAgain(boolean play){
-      TextIO.putf("Do you wanna play again?");
+  public static boolean playAgain(boolean play){
+      TextIO.putf("Do you wanna play a new game?");
       play = TextIO.getlnBoolean();
+      return play;
     }
 
-  public static void checkBS(){
+  public static void checkBS(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       int y;
       y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
       if(sayCard=cardsPlayed[y]){
