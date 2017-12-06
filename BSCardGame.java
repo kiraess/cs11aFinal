@@ -281,7 +281,7 @@ public class BSCardGame {
     check if someone wants to call BS
     if BS is called, then check who calls
     */
-    public static void BScaller(){
+  public static void BScaller(){
       TextIO.putf("Call Bullshit?%n");
       boolean call = TextIO.getlnBoolean();
       if (call==true){
@@ -295,7 +295,7 @@ public class BSCardGame {
     check who calls BS
     determines who gets the card
     */
-    public static void numBScaller(){
+  public static void numBScaller(){
       TextIO.putf("Who called Bullshit? Enter the number of the player%n");
       int userNumber = TextIO.getInt();
     }
@@ -303,13 +303,13 @@ public class BSCardGame {
     /**
     ask user what card he/she played
     */
-    public static int sayCard(){
+  public static int sayCard(){
       TextIO.putf("What card did you just put in the middle?");
       int sayCard = TextIO.getInt();
       return sayCard;
     }
 
-    public static void printRules(){
+  public static void printRules(){
       TextIO.putf("Welcome to the world of Bullshit - the best game you will ever play %n");
       TextIO.putf("Here is the rule: %n");
       TextIO.putf("You must have 4 players for this game.%n");
@@ -326,7 +326,7 @@ public class BSCardGame {
       TextIO.putf("Good luck!!%n");
     }
 
-    public static void winner(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4){
+  public static void winner(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4){
       int i = 0;
       if (userNumber==1){
         if (player1[i]==0){
@@ -347,12 +347,12 @@ public class BSCardGame {
       }
     }
 
-    public static void playAgain(boolean play){
+  public static void playAgain(boolean play){
       TextIO.putf("Do you wanna play again?");
       play = TextIO.getlnBoolean();
     }
 
-    public static void checkBS(){
+  public static void checkBS(){
       int y;
       y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
       if(sayCard=cardsPlayed[y]){
@@ -362,7 +362,7 @@ public class BSCardGame {
       }
     }
 
-    public static void BSFalse(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+  public static void BSFalse(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       int x;
       int y;
       int count=0;
@@ -399,7 +399,7 @@ public class BSCardGame {
     }
     }
 
-    public static void BSTrue(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+  public static void BSTrue(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       int x;
       int y;
       int count=0;
