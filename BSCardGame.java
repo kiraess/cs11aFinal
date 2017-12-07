@@ -21,21 +21,20 @@ public class BSCardGame {
     TextIO.putf("Ready to play?");
     play = TextIO.getlnBoolean();
 
+    shuffle(cardsPlayed);
+    distribute(cardsPlayed, player1, player2, player3, player4);
+
     do{
-      shuffle(cardsPlayed);
-      distribute(cardsPlayed, player1, player2, player3, player4);
-      TextIO.putf("Ready to take turns?");
-      boolean turn = TextIO.getlnBoolean();
       while(turn==true){
         for (int i = 1; i <= 4; i++){
           showCards(i, player1, player2, player3, player4, cardsPlayed);
           chooseCard(i, player1, player2, player3, player4, cardsPlayed);
           sayCard();
-          BSCaller();
+          BScaller(i, player1, player2, player3, player4, cardsPlayed);
         }
         nextTurn(turn);
       }
-      winner(i, player1, player2, player3, player4, cardsPlayed);
+      winner(player1, player2, player3, player4);
       playAgain(play);
     }while(play==true);
 
@@ -338,23 +337,24 @@ public class BSCardGame {
       TextIO.putf("Good luck!!%n");
     }
 
-  public static void winner(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4){
-      int i = 0;
-      if (userNumber==1){
-        if (player1[i]==0){
-          TextIO.putf("Player 1 wins!!");
-        }
-      } else if (userNumber==2){
-        if (player2[i]==0){
-          TextIO.putf("Player 2 wins!!");
-        }
-      } else if (userNumber==3){
-        if (player3[i]==0){
-          TextIO.putf("Player 3 wins!!");
-        }
-      } else {
-        if (player4[i]==0){
-          TextIO.putf("Player 4 wins!!");
+  public static void winner(int[] player1, int[] player2, int[] player3, int[] player4){
+      for (int i = 1; i < 5; i++){
+        if (i==1){
+          if (player1[i]==0){
+            TextIO.putf("Player 1 wins!!");
+          }
+        } else if (i==2){
+          if (player2[i]==0){
+            TextIO.putf("Player 2 wins!!");
+          }
+        } else if (i==3){
+          if (player3[i]==0){
+            TextIO.putf("Player 3 wins!!");
+          }
+        } else {
+          if (player4[i]==0){
+            TextIO.putf("Player 4 wins!!");
+          }
         }
       }
     }
