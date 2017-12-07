@@ -5,7 +5,7 @@ import java.util.Random;
 /**
   Main methods
 */
-public class BSCardGame {
+public class BSCardGame1 {
   public static void main(String[] args){
     Scanner input = new Scanner(System.in);
 
@@ -16,32 +16,27 @@ public class BSCardGame {
     int[] cardsPlayed = {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13};
     int x;
     boolean play;
+    boolean turn = true;
 
     printRules();
-    System.out.println("Ready to play?");
+    TextIO.putf("Ready to play?");
     play = TextIO.getlnBoolean();
 
+    shuffle(cardsPlayed);
+    distribute(cardsPlayed, player1, player2, player3, player4);
+
     do{
-      shuffle(cardsPlayed);
-      distribute(cardsPlayed, player1, player2, player3, player4);
-      TextIO.putf("Ready to take turns?");
-      boolean turn = TextIO.getlnBoolean();
       while(turn==true){
         for (int i = 1; i <= 4; i++){
           showCards(i, player1, player2, player3, player4, cardsPlayed);
           chooseCard(i, player1, player2, player3, player4, cardsPlayed);
-<<<<<<< HEAD
           TextIO.putf("What card did you just put in the middle?");
           x = sayCard();
           BScaller(x, i, player1, player2, player3, player4, cardsPlayed);
-=======
-          sayCard();
-          numBSCaller();
->>>>>>> a05d37c7f9500f12f520decb7580249814ed9d65
         }
         nextTurn();
       }
-      winner(userNumber, player1, player2, player3, player4, cardsPlayed);
+      winner(player1, player2, player3, player4);
       playAgain(play);
     }while(play==true);
 
@@ -95,64 +90,33 @@ public class BSCardGame {
     Show the array of cards
   */
   public static void showCards(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
+    int x;
     System.out.println("");
     System.out.println("Here are you cards...");
     if (userNumber==1){
-      showPlayer1(userNumber, player1, player2, player3, player4, cardsPlayed);
+      System.out.println("Player 1:");
+      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+      for (int i = 0; i<x; i++ ){
+        System.out.print(player1[i] + " ");
+      }
     } else if (userNumber==2){
-      showPlayer2(userNumber, player1, player2, player3, player4, cardsPlayed);
+      System.out.println("Player 2:");
+      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+      for (int i = 0; i<x; i++ ){
+        System.out.print(player2[i] + " ");
+      }
     } else if (userNumber==3){
-      showPlayer3(userNumber, player1, player2, player3, player4, cardsPlayed);
+      System.out.println("Player 3:");
+      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+      for (int i = 0; i<x; i++ ){
+        System.out.print(player3[i] + " ");
+      }
     } else {
-      showPlayer4(userNumber, player1, player2, player3, player4, cardsPlayed);
-    }
-  }
-
-  /**
-  show the cards for player1
-  */
-  public static void showPlayer1(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    System.out.println("Player 1:");
-    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-    for (int i = 0; i<x; i++ ){
-      System.out.print(player1[i] + " ");
-    }
-  }
-
-  /**
-  show the cards for player2
-  */
-  public static void showPlayer2(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    System.out.println("Player 2:");
-    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-    for (int i = 0; i<x; i++ ){
-      System.out.print(player2[i] + " ");
-    }
-  }
-
-  /**
-  show the cards for player3
-  */
-  public static void showPlayer3(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    System.out.println("Player 3:");
-    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-    for (int i = 0; i<x; i++ ){
-      System.out.print(player3[i] + " ");
-    }
-  }
-
-  /**
-  show the cards for player1
-  */
-  public static void showPlayer4(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    System.out.println("Player 4:");
-    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-    for (int i = 0; i<x; i++ ){
-      System.out.print(player4[i] + " ");
+      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+      System.out.println("Player 4:");
+      for (int i = 0; i<x; i++ ){
+        System.out.print(player4[i] + " ");
+      }
     }
   }
 
@@ -178,35 +142,15 @@ public class BSCardGame {
       userInput = input.nextInt();
       checkCard(userInput, 4, player1, player2, player3, player4, cardsPlayed);
     }
-  }zz
+  }
   /**
     check if the number is actually in array
     move the all index down
   */
   public static void checkCard(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    if (userNumber==1){
-      checkCardP1(userInput, userNumber, player1, player2, player3, player4, cardsPlayed);
-    }
-
-    if (userNumber==2){
-      checkCardP2(userInput, userNumber, player1, player2, player3, player4, cardsPlayed);
-    }
-
-    if (userNumber==3){
-      checkCardP3(userInput, userNumber, player1, player2, player3, player4, cardsPlayed);
-    }
-
-  if (userNumber==4){
-      checkCardP4(userInput, userNumber, player1, player2, player3, player4, cardsPlayed);
-  }
-    } // method
-
-  /**
-  check the cards player1
-  */
-  public static void checkCardP1(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int count = 0;
+    if (userNumber==1){
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
     for (int i = 0; i< x; i++){
@@ -216,14 +160,8 @@ public class BSCardGame {
         break for_loop;
         }
       }
-  }//method
-
-  /**
-  check the cards player2
-  */
-  public static void checkCardP2(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    int count = 0;
+    }
+    if (userNumber==2){
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
     for (int i = 0; i< x; i++){
@@ -233,14 +171,8 @@ public class BSCardGame {
         break for_loop;
         }
       }
-  }//method
-
-  /**
-  check the cards player3
-  */
-  public static void checkCardP3(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    int count = 0;
+    }
+    if (userNumber==3){
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
     for (int i = 0; i< x; i++){
@@ -250,14 +182,8 @@ public class BSCardGame {
         break for_loop;
         }
       }
-  }//method
-
-  /**
-  check the cards player4
-  */
-  public static void checkCardP4(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    int count = 0;
+    }
+    if (userNumber==4){
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
     for (int i = 0; i< x; i++){
@@ -267,7 +193,8 @@ public class BSCardGame {
         break for_loop;
         }
       }
-  }//method
+    }
+  } // method
 
   /**
     move number to middle
@@ -275,153 +202,92 @@ public class BSCardGame {
     move middleSet element up
   */
   public static void toMiddle(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int x;
+    int y;
     if (userNumber==1){
-      toMiddleP1(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+      System.out.println("ToMiddle is working");
+      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+      y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+      cardsPlayed[y] = player1[count];
+      for (int i = count-1; i<x; i++ ) {
+        player1[i] = player1[i+1];
+      }
+      player1[x-1] = 0;
     } else if (userNumber==2){
-      toMiddleP2(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+      y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+      cardsPlayed[y] = player2[count];
+      for (int i = count-1; i<x; i++ ) {
+        player2[i] = player2[i+1];
+      }
+      player2[x-1] = 0;
     } else if (userNumber==3){
-      toMiddleP3(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+      y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+      cardsPlayed[y] = player3[count];
+      for (int i = count-1; i<x; i++ ) {
+        player3[i] = player3[i+1];
+      }
+      player3[x-1] = 0;
     } else {
-      toMiddleP4(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+      y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+      cardsPlayed[y] = player4[count];
+      for (int i = count-1; i<x; i++ ) {
+        player4[i] = player4[i+1];
+      }
+      player4[x-1] = 0;
     }
-  }//method
-
-  /**
-  to middle player1
-  */
-  public static void toMiddleP1(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    int y;
-    System.out.println("ToMiddle is working");
-    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-    y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-    cardsPlayed[y] = player1[count];
-    for (int i = count-1; i<x; i++ ) {
-      player1[i] = player1[i+1];
-    }
-    player1[x-1] = 0;
-  }//method
-
-  /**
-  to middle player2
-  */
-  public static void toMiddleP2(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    int y;
-    System.out.println("ToMiddle is working");
-    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-    y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-    cardsPlayed[y] = player2[count];
-    for (int i = count-1; i<x; i++ ) {
-      player2[i] = player2[i+1];
-    }
-    player2[x-1] = 0;
-  }//method
-
-  /**
-  to middle player3
-  */
-  public static void toMiddleP3(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    int y;
-    System.out.println("ToMiddle is working");
-    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-    y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-    cardsPlayed[y] = player3[count];
-    for (int i = count-1; i<x; i++ ) {
-      player3[i] = player3[i+1];
-    }
-    player3[x-1] = 0;
-  }//method
-
-  /**
-  to middle player4
-  */
-  public static void toMiddleP4(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-    int x;
-    int y;
-    System.out.println("ToMiddle is working");
-    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-    y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-    cardsPlayed[y] = player4[count];
-    for (int i = count-1; i<x; i++ ) {
-      player4[i] = player4[i+1];
-    }
-    player4[x-1] = 0;
-  }//method
+  }
 
   /**
     Track how many elements are there in the array
   */
   public static int arrayTracker(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
-    if (userNumber==1){
-      arrayTrackerP1(userNumber, player1, player2, player3, player4, cardsPlayed);
-    } else if (userNumber==2){
-      arrayTrackerP2(userNumber, player1, player2, player3, player4, cardsPlayed);
-    } else if (userNumber==3){
-      arrayTrackerP3(userNumber, player1, player2, player3, player4, cardsPlayed);
-    } else if (userNumber==4){
-      arrayTrackerP4(userNumber, player1, player2, player3, player4, cardsPlayed);
-    } else {
-      arrayTrackerP1(userNumber, player1, player2, player3, player4, cardsPlayed);
-      return n;
-    }
-
-/**
-track how many elements are in the array of player1
-*/
-  public static void arrayTrackerP1(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int n = 0;
-    for (int i=0; i<player1.length; i++){
-      if (player1[i] == 0){
-        return n-1;
-      }else {
-        n++;
-      }
-    }
-  }//method
-
-  /**
-  track how many elements are in the array of player2
-  */
-  public static void arrayTrackerP2(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-      int n = 0;
-      for (int i=0; i<player2.length; i++){
-        if (player2[i] == 0){
+    if (userNumber==1){
+      for (int i=0; i<player1.length; i++){
+        if (player1[i] == 0){
           return n-1;
         }else {
           n++;
         }
       }
-    }//method
-
-    /**
-    track how many elements are in the array of player3
-    */
-    public static void arrayTrackerP3(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-        int n = 0;
-        for (int i=0; i<player3.length; i++){
-          if (player3[i] == 0){
+    } else if (userNumber==2){
+      for (int i=0; i<player1.length; i++){
+        if (player1[i] == 0){
+          return n-1;
+        }else {
+          n++;
+        }
+      }
+    } else if (userNumber==3){
+        for (int i=0; i<player1.length; i++){
+          if (player1[i] == 0){
             return n-1;
           }else {
             n++;
           }
         }
-      }//method
-
-      /**
-      track how many elements are in the array of player4
-      */
-    public static void arrayTrackerP4(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-          int n = 0;
-          for (int i=0; i<player4.length; i++){
-            if (player4[i] == 0){
-              return n-1;
-            }else {
-              n++;
-            }
+    } else if (userNumber==4){
+        for (int i=0; i<player1.length; i++){
+          if (player1[i] == 0){
+            return n-1;
+          }else {
+            n++;
           }
-        }//method
+        }
+    } else {
+        for (int i=0; i<player1.length; i++){
+          if (player1[i] == 0){
+            return n-1;
+          }else {
+            n++;
+          }
+        }
+      }
+      return n;
+    }
 
     /**
     check if someone wants to call BS
@@ -448,7 +314,6 @@ track how many elements are in the array of player1
       return x;
     }
 
-
     /**
     ask user what card he/she played
     */
@@ -474,23 +339,24 @@ track how many elements are in the array of player1
       TextIO.putf("Good luck!!%n");
     }
 
-  public static void winner(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4){
-      int i = 0;
-      if (userNumber==1){
-        if (player1[i]==0){
-          TextIO.putf("Player 1 wins!!");
-        }
-      } else if (userNumber==2){
-        if (player2[i]==0){
-          TextIO.putf("Player 2 wins!!");
-        }
-      } else if (userNumber==3){
-        if (player3[i]==0){
-          TextIO.putf("Player 3 wins!!");
-        }
-      } else {
-        if (player4[i]==0){
-          TextIO.putf("Player 4 wins!!");
+  public static void winner(int[] player1, int[] player2, int[] player3, int[] player4){
+      for (int i = 1; i < 5; i++){
+        if (i==1){
+          if (player1[i]==0){
+            TextIO.putf("Player 1 wins!!");
+          }
+        } else if (i==2){
+          if (player2[i]==0){
+            TextIO.putf("Player 2 wins!!");
+          }
+        } else if (i==3){
+          if (player3[i]==0){
+            TextIO.putf("Player 3 wins!!");
+          }
+        } else {
+          if (player4[i]==0){
+            TextIO.putf("Player 4 wins!!");
+          }
         }
       }
     }
@@ -519,19 +385,31 @@ track how many elements are in the array of player1
       if(userNumber==1){ //caller
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-        addCardsBS1(player1, cardsPlayed, count);
+        for(int i=x+1;i<=x+y;i++){
+          player1[i] = cardsPlayed[count];
+          count++;
+        }
       }else if(userNumber==2){
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-        addCardsBS2(player1, cardsPlayed, count);
+        for(int i=x+1;i<=x+y;i++){
+          player2[i] = cardsPlayed[count];
+          count++;
+        }
       }else if(userNumber==3){
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-        addCardsBS3(player1, cardsPlayed, count);
+        for(int i=x+1;i<=x+y;i++){
+          player3[i] = cardsPlayed[count];
+          count++;
+        }
       }else if(userNumber==4){
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-        addCardsBS4(player1, cardsPlayed, count);
+        for(int i=x+1;i<=x+y;i++){
+          player4[i] = cardsPlayed[count];
+          count++;
+        }
       }
     }
 
@@ -539,66 +417,36 @@ track how many elements are in the array of player1
       System.out.println("You are right! It was a lie!");
       int x;
       int y;
-      int count = 0;
+      int count=0;
       userNumber=userNumber-1;
       if(userNumber==1){ //player that is called
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-        addCardsBS1(player1, cardsPlayed, count);
+        for(int i=x+1;i<=x+y;i++){
+          player1[i] = cardsPlayed[count];
+          count++;
+        }
       }else if(userNumber==2){
           x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
           y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-          addCardsBS2(player1, cardsPlayed, count);
+          for(int i=x+1;i<=x+y;i++){
+            player2[i] = cardsPlayed[count];
+            count++;
+          }
       }else if(userNumber==3){
           x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
           y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-          addCardsBS3(player1, cardsPlayed, count);
+          for(int i=x+1;i<=x+y;i++){
+            player3[i] = cardsPlayed[count];
+            count++;
+          }
       }else if(userNumber==4){
           x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
           y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-          addCardsBS4(player1, cardsPlayed, count);
+          for(int i=x+1;i<=x+y;i++){
+            player4[i] = cardsPlayed[count];
+            count++;
+          }
       }
     }
-  /**
-  new method to add all the cards to player1
-  */
-  public static void addCardsBS1(int[] player1, int[] cardsPlayed, int count){
-    int count=0;
-    for(int i=x+1;i<=x+y;i++){
-      player1[i] = cardsPlayed[count];
-      count++;
-    }
-  }
-
-  /**
-  new method to add all the cards to player2
-  */
-  public static void addCardsBS2(int[] player2, int[] cardsPlayed, int count){
-    for(int i=x+1;i<=x+y;i++){
-      player2[i] = cardsPlayed[count];
-      count++;
-    }
-  }
-
-  /**
-  new method to add all the cards to player3
-  */
-  public static void addCardsBS3(int[] player3, int[] cardsPlayed, int count){
-    int count=0;
-    for(int i=x+1;i<=x+y;i++){
-      player3[i] = cardsPlayed[count];
-      count++;
-    }
-  }
-
-  /**
-  new method to add all the cards to player4
-  */
-  public static void addCardsBS4(int[] player4, int[] cardsPlayed, int count){
-    int count=0;
-    for(int i=x+1;i<=x+y;i++){
-      player4[i] = cardsPlayed[count];
-      count++;
-    }
-  }
-}//class
+  }//class
