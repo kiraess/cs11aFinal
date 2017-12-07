@@ -2,7 +2,6 @@
   BSCardGame allows the users to play a card game called Bullshit using this program.
   This program requires four players to play the game.
 */
-
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;
@@ -10,7 +9,7 @@ import java.util.Random;
 /**
   Main methods
 */
-public class BSCardGame {
+public class BSCardGame1 {
   public static void main(String[] args){
     Scanner input = new Scanner(System.in);
 
@@ -24,7 +23,7 @@ public class BSCardGame {
     boolean turn = true;
 
     printRules();
-    TextIO.putf("Ready to play?%n");
+    TextIO.putf("Ready to play?");
     play = TextIO.getlnBoolean();
 
     shuffle(cardsPlayed);
@@ -45,7 +44,7 @@ public class BSCardGame {
       playAgain(play);
     }while(play==true);
 
-  }//main
+  }
 
   /**
   nextTurn() read the response from the users and moves to the next turn if the
@@ -108,35 +107,53 @@ public class BSCardGame {
     @param player3[] a String array that contains the cards that are held by player3
     @param player4[] a String array that contains the cards that are held by player4
   */
-
   public static void showCards(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
-    int x;
     System.out.println("");
     System.out.println("Here are you cards...");
     if (userNumber==1){
-      System.out.println("Player 1:");
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      for (int i = 0; i<x; i++ ){
-        System.out.print(player1[i] + " ");
-      }
+      showCards1(player1, player2, player3, player4, cardsPlayed);
     } else if (userNumber==2){
-      System.out.println("Player 2:");
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      for (int i = 0; i<x; i++ ){
-        System.out.print(player2[i] + " ");
-      }
+      showCards2(player1, player2, player3, player4, cardsPlayed);
     } else if (userNumber==3){
-      System.out.println("Player 3:");
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      for (int i = 0; i<x; i++ ){
-        System.out.print(player3[i] + " ");
-      }
+      showCards3(player1, player2, player3, player4, cardsPlayed);
     } else {
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      System.out.println("Player 4:");
-      for (int i = 0; i<x; i++ ){
-        System.out.print(player4[i] + " ");
-      }
+      showCards4(player1, player2, player3, player4, cardsPlayed);
+    }
+  }
+
+  public static void showCards1(int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
+    int x;
+    System.out.println("Player 1:");
+    x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
+    for (int i = 0; i<x; i++ ){
+      System.out.print(player1[i] + " ");
+    }
+  }
+
+  public static void showCards2(int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
+    int x;
+    System.out.println("Player 2:");
+    x = arrayTracker(2, player1, player2, player3, player4, cardsPlayed);
+    for (int i = 0; i<x; i++ ){
+      System.out.print(player2[i] + " ");
+    }
+  }
+
+  public static void showCards3(int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
+    int x;
+    System.out.println("Player 3:");
+    x = arrayTracker(3, player1, player2, player3, player4, cardsPlayed);
+    for (int i = 0; i<x; i++ ){
+      System.out.print(player3[i] + " ");
+    }
+  }
+
+  public static void showCards4(int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
+    int x;
+    System.out.println("Player 4:");
+    x = arrayTracker(4, player1, player2, player3, player4, cardsPlayed);
+    for (int i = 0; i<x; i++ ){
+      System.out.print(player4[i] + " ");
     }
   }
 
@@ -150,7 +167,6 @@ public class BSCardGame {
     @param player3[] a String array that contains the cards that are held by player3
     @param player4[] a String array that contains the cards that are held by player4
   */
-
   public static void chooseCard(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     Scanner input = new Scanner(System.in);
     System.out.println("");
@@ -169,7 +185,7 @@ public class BSCardGame {
       userInput = input.nextInt();
       checkCard(userInput, 4, player1, player2, player3, player4, cardsPlayed);
     }
-  }\
+  }
 
   /**
     checkCard() checks if the number is actually in the array and move all the index down
@@ -181,11 +197,24 @@ public class BSCardGame {
     @param player3[] a String array that contains the cards that are held by player3
     @param player4[] a String array that contains the cards that are held by player4
   */
-
   public static void checkCard(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    if (userNumber==1){
+      checkCard1(userInput, userNumber, player1, player2, player3, player4, cardsPlayed);
+    }
+    if (userNumber==2){
+      checkCard2(userInput, userNumber, player1, player2, player3, player4, cardsPlayed);
+    }
+    if (userNumber==3){
+      checkCard3(userInput, userNumber, player1, player2, player3, player4, cardsPlayed);
+    }
+    if (userNumber==4){
+      checkCard4(userInput, userNumber, player1, player2, player3, player4, cardsPlayed);
+    }
+  } // method
+
+  public static void checkCard1(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int count = 0;
-    if (userNumber==1){
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
     for (int i = 0; i< x; i++){
@@ -195,8 +224,11 @@ public class BSCardGame {
         break for_loop;
         }
       }
-    }
-    if (userNumber==2){
+  }
+
+  public static void checkCard2(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int x;
+    int count = 0;
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
     for (int i = 0; i< x; i++){
@@ -206,8 +238,11 @@ public class BSCardGame {
         break for_loop;
         }
       }
-    }
-    if (userNumber==3){
+  }
+
+  public static void checkCard3(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int x;
+    int count = 0;
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
     for (int i = 0; i< x; i++){
@@ -217,8 +252,11 @@ public class BSCardGame {
         break for_loop;
         }
       }
-    }
-    if (userNumber==4){
+  }
+
+  public static void checkCard4(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int x;
+    int count = 0;
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
     for (int i = 0; i< x; i++){
@@ -228,7 +266,6 @@ public class BSCardGame {
         break for_loop;
         }
       }
-    }
   }
 
   /**
@@ -243,44 +280,68 @@ public class BSCardGame {
     @param player4[] a String array that contains the cards that are held by player4
     @param count an integer that keeps track of index value of where the first 0 appear in the array to keep track of how many cards are there in the array
   */
-
   public static void toMiddle(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    if (userNumber==1){
+      toMiddle1(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+    } else if (userNumber==2){
+      toMiddle2(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+    } else if (userNumber==3){
+      toMiddle3(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+    } else {
+      toMiddle4(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+    }
+  }
+
+  public static void toMiddle1(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int y;
-    if (userNumber==1){
-      System.out.println("ToMiddle is working");
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-      cardsPlayed[y] = player1[count];
-      for (int i = count-1; i<x; i++ ) {
-        player1[i] = player1[i+1];
-      }
-      player1[x-1] = 0;
-    } else if (userNumber==2){
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-      cardsPlayed[y] = player2[count];
-      for (int i = count-1; i<x; i++ ) {
-        player2[i] = player2[i+1];
-      }
-      player2[x-1] = 0;
-    } else if (userNumber==3){
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-      cardsPlayed[y] = player3[count];
-      for (int i = count-1; i<x; i++ ) {
-        player3[i] = player3[i+1];
-      }
-      player3[x-1] = 0;
-    } else {
-      x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-      y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-      cardsPlayed[y] = player4[count];
-      for (int i = count-1; i<x; i++ ) {
-        player4[i] = player4[i+1];
-      }
-      player4[x-1] = 0;
+    System.out.println("ToMiddle is working");
+    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+    y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+    cardsPlayed[y] = player1[count];
+    for (int i = count-1; i<x; i++ ) {
+      player1[i] = player1[i+1];
     }
+    player1[x-1] = 0;
+  }
+
+  public static void toMiddle2(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int x;
+    int y;
+    System.out.println("ToMiddle is working");
+    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+    y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+    cardsPlayed[y] = player2[count];
+    for (int i = count-1; i<x; i++ ) {
+      player2[i] = player2[i+1];
+    }
+    player2[x-1] = 0;
+  }
+
+  public static void toMiddle3(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int x;
+    int y;
+    System.out.println("ToMiddle is working");
+    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+    y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+    cardsPlayed[y] = player3[count];
+    for (int i = count-1; i<x; i++ ) {
+      player3[i] = player3[i+1];
+    }
+    player3[x-1] = 0;
+  }
+
+  public static void toMiddle4(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int x;
+    int y;
+    System.out.println("ToMiddle is working");
+    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+    y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
+    cardsPlayed[y] = player4[count];
+    for (int i = count-1; i<x; i++ ) {
+      player4[i] = player4[i+1];
+    }
+    player4[x-1] = 0;
   }
 
   /**
@@ -292,65 +353,117 @@ public class BSCardGame {
     @param player3[] a String array that contains the cards that are held by player3
     @param player4[] a String array that contains the cards that are held by player4
   */
-
   public static int arrayTracker(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
     int n = 0;
     if (userNumber==1){
-      for (int i=0; i<player1.length; i++){
-        if (player1[i] == 0){
-          return n-1;
-        }else {
-          n++;
-        }
-      }
+      n = arrayTrackerP1(userNumber, player1, player2, player3, player4, cardsPlayed);
     } else if (userNumber==2){
-      for (int i=0; i<player1.length; i++){
-        if (player1[i] == 0){
-          return n-1;
-        }else {
-          n++;
-        }
-      }
+      n = arrayTrackerP2(userNumber, player1, player2, player3, player4, cardsPlayed);
     } else if (userNumber==3){
-        for (int i=0; i<player1.length; i++){
-          if (player1[i] == 0){
-            return n-1;
-          }else {
-            n++;
-          }
-        }
+      n = arrayTrackerP3(userNumber, player1, player2, player3, player4, cardsPlayed);
     } else if (userNumber==4){
-        for (int i=0; i<player1.length; i++){
-          if (player1[i] == 0){
-            return n-1;
-          }else {
-            n++;
-          }
-        }
+      n = arrayTrackerP4(userNumber, player1, player2, player3, player4, cardsPlayed);
     } else {
-        for (int i=0; i<player1.length; i++){
-          if (player1[i] == 0){
-            return n-1;
-          }else {
-            n++;
-          }
-        }
+      n = arrayTrackerP1(userNumber, player1, player2, player3, player4, cardsPlayed);
       }
       return n;
     }
 
-    /**
-      BScaller() checks if someone wants to call Bullshit
-      and who called the Bullshit, if someone called
-      @param userInput an integer that represents the card that is placed to middle by user
-      @param userNumber an integer that represents the position of each player
-      @param cardsPlayed[] a String array that contains the cards that are not held by the users
-      @param player1[] a String array that contains the cards that are held by player1
-      @param player2[] a String array that contains the cards that are held by player2
-      @param player3[] a String array that contains the cards that are held by player3
-      @param player4[] a String array that contains the cards that are held by player4
-    */
+  /**
+    arrayTrackerP1 tracks how many elements are there in the array kept for player1
+    @param userNumber an integer that represents the position of each player
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+  */
+  public static int arrayTrackerP1(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int n=0;
+    for (int i=0; i<player1.length; i++){
+      if (player1[i] == 0){
+        return n-1;
+      }else {
+        n++;
+      }
+    }
+    return n;
+  }
 
+  /**
+    arrayTrackerP2 tracks how many elements are there in the array kept for player2
+    @param userNumber an integer that represents the position of each player
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+  */
+  public static int arrayTrackerP2(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int n=0;
+    for (int i=0; i<player2.length; i++){
+      if (player2[i] == 0){
+        return n-1;
+      }else {
+        n++;
+      }
+    }
+    return n;
+  }
+
+  /**
+    arrayTrackerP3 tracks how many elements are there in the array kept for player3
+    @param userNumber an integer that represents the position of each player
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+  */
+  public static int arrayTrackerP3(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int n=0;
+    for (int i=0; i<player3.length; i++){
+      if (player3[i] == 0){
+        return n-1;
+      }else {
+        n++;
+      }
+    }
+    return n;
+  }
+
+  /**
+    arrayTrackerP4 tracks how many elements are there in the array kept for player4
+    @param userNumber an integer that represents the position of each player
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+  */
+  public static int arrayTrackerP4(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+    int n=0;
+    for (int i=0; i<player4.length; i++){
+      if (player4[i] == 0){
+        return n-1;
+      }else {
+        n++;
+      }
+    }
+    return n;
+  }
+
+  /**
+    BScaller() checks if someone wants to call Bullshit
+    and who called the Bullshit, if someone called
+    @param userInput an integer that represents the card that is placed to middle by user
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void BScaller(int say, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       int caller;
       TextIO.putf("Call Bullshit?%n");
@@ -384,7 +497,6 @@ public class BSCardGame {
     /**
     printRules() prints out the instructions of the game
     */
-
   public static void printRules(){
       TextIO.putf("Welcome to the world of Bullshit - the best game you will ever play %n");
       TextIO.putf("Here is the rule: %n");
@@ -409,7 +521,6 @@ public class BSCardGame {
       @param player3[] a String array that contains the cards that are held by player3
       @param player4[] a String array that contains the cards that are held by player4
     */
-
   public static void winner(int[] player1, int[] player2, int[] player3, int[] player4){
       for (int i = 1; i < 5; i++){
         if (i==1){
@@ -435,7 +546,6 @@ public class BSCardGame {
     /**
     playAgain() asks if the user wants to play the game again
     */
-
   public static boolean playAgain(boolean play){
       TextIO.putf("Do you wanna play a new game?");
       play = TextIO.getlnBoolean();
@@ -462,7 +572,6 @@ public class BSCardGame {
       }
     }
 
-
     /**
       BSFalse() shows what happens when a Bullshit call is ineffective
       The caller gets all the cards from middle
@@ -473,33 +582,129 @@ public class BSCardGame {
       @param player3[] a String array that contains the cards that are held by player3
       @param player4[] a String array that contains the cards that are held by player4
     */
-  public static void BSFalse(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-      System.out.println("You are wrong! It wasn't a lie!");
-      int x;
-      int y;
-      int count=0;
-      if(userNumber==1){ //caller
+    public static void BSFalse(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+        System.out.println("You are wrong! It wasn't a lie!");
+        int x;
+        int y;
+        int count=0;
+        if(userNumber==1){ //caller
+          checkBSP1(userNumber, player1, player2, player3, player4, cardsPlayed);
+        }else if(userNumber==2){
+          checkBSP2(userNumber, player1, player2, player3, player4, cardsPlayed);
+        }else if(userNumber==3){
+          checkBSP3(userNumber, player1, player2, player3, player4, cardsPlayed);
+        }else if(userNumber==4){
+          checkBSP4(userNumber, player1, player2, player3, player4, cardsPlayed);
+        }
+      }
+
+      /**
+        BSTrue() shows what happens when a Bullshit call is effective
+        The player who is called gets all the cards from middle
+        @param userNumber an integer that represents the position of each player
+        @param cardsPlayed[] a String array that contains the cards that are not held by the users
+        @param player1[] a String array that contains the cards that are held by player1
+        @param player2[] a String array that contains the cards that are held by player2
+        @param player3[] a String array that contains the cards that are held by player3
+        @param player4[] a String array that contains the cards that are held by player4
+      */
+    public static void BSTrue(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+        System.out.println("You are right! It was a lie!");
+        int x;
+        int y;
+        int count=0;
+        userNumber=userNumber-1;
+        if(userNumber==1){ //player that is called
+          checkBSP1(userNumber, player1, player2, player3, player4, cardsPlayed);
+        }else if(userNumber==2){
+          checkBSP2(userNumber, player1, player2, player3, player4, cardsPlayed);
+        }else if(userNumber==3){
+          checkBSP3(userNumber, player1, player2, player3, player4, cardsPlayed);
+        }else if(userNumber==4){
+          checkBSP4(userNumber, player1, player2, player3, player4, cardsPlayed);
+        }
+      }
+
+      /**
+        checkBSP1() shows that the player1 will receive all the card on the table
+        @param userNumber an integer that represents the position of each player
+        @param player1[] a String array that contains the cards that are held by player1
+        @param player2[] a String array that contains the cards that are held by player2
+        @param player3[] a String array that contains the cards that are held by player3
+        @param player4[] a String array that contains the cards that are held by player4
+        @param cardsPlayed[] a String array that contains the cards that are not held by the users
+      */
+      public static void checkBSP1(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+        int x;
+        int y;
+        int count=0;
+        userNumber=userNumber-1;
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
         for(int i=x+1;i<=x+y;i++){
           player1[i] = cardsPlayed[count];
           count++;
         }
-      }else if(userNumber==2){
+      }
+
+      /**
+        checkBSP2() shows that the player2 will receive all the card on the table
+        @param userNumber an integer that represents the position of each player
+        @param player1[] a String array that contains the cards that are held by player1
+        @param player2[] a String array that contains the cards that are held by player2
+        @param player3[] a String array that contains the cards that are held by player3
+        @param player4[] a String array that contains the cards that are held by player4
+        @param cardsPlayed[] a String array that contains the cards that are not held by the users
+      */
+      public static void checkBSP2(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+        int x;
+        int y;
+        int count=0;
+        userNumber=userNumber-1;
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
         for(int i=x+1;i<=x+y;i++){
           player2[i] = cardsPlayed[count];
           count++;
         }
-      }else if(userNumber==3){
+      }
+
+      /**
+        checkBSP3() shows that the player3 will receive all the card on the table
+        @param userNumber an integer that represents the position of each player
+        @param player1[] a String array that contains the cards that are held by player1
+        @param player2[] a String array that contains the cards that are held by player2
+        @param player3[] a String array that contains the cards that are held by player3
+        @param player4[] a String array that contains the cards that are held by player4
+        @param cardsPlayed[] a String array that contains the cards that are not held by the users
+      */
+      public static void checkBSP3(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+        int x;
+        int y;
+        int count=0;
+        userNumber=userNumber-1;
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
         for(int i=x+1;i<=x+y;i++){
           player3[i] = cardsPlayed[count];
           count++;
         }
-      }else if(userNumber==4){
+      }
+
+      /**
+        checkBSP4() shows that the player4 will receive all the card on the table
+        @param userNumber an integer that represents the position of each player
+        @param player1[] a String array that contains the cards that are held by player1
+        @param player2[] a String array that contains the cards that are held by player2
+        @param player3[] a String array that contains the cards that are held by player3
+        @param player4[] a String array that contains the cards that are held by player4
+        @param cardsPlayed[] a String array that contains the cards that are not held by the users
+      */
+      public static void checkBSP4(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+        int x;
+        int y;
+        int count=0;
+        userNumber=userNumber-1;
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
         for(int i=x+1;i<=x+y;i++){
@@ -507,52 +712,4 @@ public class BSCardGame {
           count++;
         }
       }
-    }
-
-    /**
-      BSTrue() shows what happens when a Bullshit call is effective
-      The player who is called gets all the cards from middle
-      @param userNumber an integer that represents the position of each player
-      @param cardsPlayed[] a String array that contains the cards that are not held by the users
-      @param player1[] a String array that contains the cards that are held by player1
-      @param player2[] a String array that contains the cards that are held by player2
-      @param player3[] a String array that contains the cards that are held by player3
-      @param player4[] a String array that contains the cards that are held by player4
-    */
-  public static void BSTrue(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
-      System.out.println("You are right! It was a lie!");
-      int x;
-      int y;
-      int count=0;
-      userNumber=userNumber-1;
-      if(userNumber==1){ //player that is called
-        x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
-        y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-        for(int i=x+1;i<=x+y;i++){
-          player1[i] = cardsPlayed[count];
-          count++;
-        }
-      }else if(userNumber==2){
-          x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
-          y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-          for(int i=x+1;i<=x+y;i++){
-            player2[i] = cardsPlayed[count];
-            count++;
-          }
-      }else if(userNumber==3){
-          x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
-          y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-          for(int i=x+1;i<=x+y;i++){
-            player3[i] = cardsPlayed[count];
-            count++;
-          }
-      }else if(userNumber==4){
-          x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
-          y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-          for(int i=x+1;i<=x+y;i++){
-            player4[i] = cardsPlayed[count];
-            count++;
-          }
-      }
-    }
-  }//class
+    }//class
