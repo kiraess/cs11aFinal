@@ -14,6 +14,7 @@ public class BSCardGame {
     int[] player3 = new int [52];
     int[] player4 = new int [52];
     int[] cardsPlayed = {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13};
+    int x;
     boolean play;
 
     printRules();
@@ -29,8 +30,14 @@ public class BSCardGame {
         for (int i = 1; i <= 4; i++){
           showCards(i, player1, player2, player3, player4, cardsPlayed);
           chooseCard(i, player1, player2, player3, player4, cardsPlayed);
+<<<<<<< HEAD
+          TextIO.putf("What card did you just put in the middle?");
+          x = sayCard();
+          BScaller(x, i, player1, player2, player3, player4, cardsPlayed);
+=======
           sayCard();
           numBSCaller();
+>>>>>>> a05d37c7f9500f12f520decb7580249814ed9d65
         }
         nextTurn();
       }
@@ -420,14 +427,13 @@ track how many elements are in the array of player1
     check if someone wants to call BS
     if BS is called, then check who calls
     */
-  public static void BScaller(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+  public static void BScaller(int say, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+      int caller;
       TextIO.putf("Call Bullshit?%n");
       boolean call = TextIO.getlnBoolean();
       if (call==true){
-        numBSCaller();
-        checkBS(userNumber, player1, player2, player3, player4, cardsPlayed);
-      } else {
-        break;
+        caller = numBSCaller();
+        checkBS(say, caller, player1, player2, player3, player4, cardsPlayed);
       }
     }
 
@@ -435,9 +441,11 @@ track how many elements are in the array of player1
     check who calls BS
     determines who gets the card
     */
-  public static void numBScaller(){
+  public static int numBSCaller(){
+      int x;
       TextIO.putf("Who called Bullshit? Enter the number of the player%n");
-      int userNumber = TextIO.getInt();
+      x = TextIO.getInt();
+      return x;
     }
 
 
@@ -445,7 +453,6 @@ track how many elements are in the array of player1
     ask user what card he/she played
     */
   public static int sayCard(){
-      TextIO.putf("What card did you just put in the middle?");
       int sayCard = TextIO.getInt();
       return sayCard;
     }
@@ -494,17 +501,18 @@ track how many elements are in the array of player1
       return play;
     }
 
-  public static void checkBS(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+  public static void checkBS(int caller, int say, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       int y;
       y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-      if(sayCard=cardsPlayed[y]){
-        BSTrue(userNumber, player1, player2, player3, player4, cardsPlayed);
+      if(say==cardsPlayed[y]){
+        BSTrue(caller, player1, player2, player3, player4, cardsPlayed);
       }else{
-        BSFalse(userNumber, player1, player2, player3, player4, cardsPlayed);
+        BSFalse(caller, player1, player2, player3, player4, cardsPlayed);
       }
     }
 
   public static void BSFalse(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+      System.out.println("You are wrong! It wasn't a lie!");
       int x;
       int y;
       int count=0;
@@ -528,6 +536,7 @@ track how many elements are in the array of player1
     }
 
   public static void BSTrue(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
+      System.out.println("You are right! It was a lie!");
       int x;
       int y;
       int count = 0;
