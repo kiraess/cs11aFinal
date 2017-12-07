@@ -5,7 +5,7 @@ import java.util.Random;
 /**
   Main methods
 */
-public class BSCardGame {
+public class BSCardGame1 {
   public static void main(String[] args){
     Scanner input = new Scanner(System.in);
 
@@ -15,6 +15,7 @@ public class BSCardGame {
     int[] player4 = new int [52];
     int[] cardsPlayed = {1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13};
     boolean play;
+    boolean turn = true;
 
     printRules();
     TextIO.putf("Ready to play?");
@@ -29,11 +30,11 @@ public class BSCardGame {
           showCards(i, player1, player2, player3, player4, cardsPlayed);
           chooseCard(i, player1, player2, player3, player4, cardsPlayed);
           sayCard();
-          numBSCaller();
+          BSCaller();
         }
         nextTurn(turn);
       }
-      winner(userNumber, player1, player2, player3, player4, cardsPlayed);
+      winner(i, player1, player2, player3, player4, cardsPlayed);
       playAgain(play);
     }while(play==true);
 
@@ -158,7 +159,6 @@ public class BSCardGame {
         }
       }
     }
-
     if (userNumber==2){
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
@@ -170,7 +170,6 @@ public class BSCardGame {
         }
       }
     }
-
     if (userNumber==3){
     x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
     for_loop:
@@ -182,19 +181,18 @@ public class BSCardGame {
         }
       }
     }
-
-  if (userNumber==4){
-  x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
-  for_loop:
-  for (int i = 0; i< x; i++){
-    count++;
-    if (player4[i] == userInput){
-      toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
-      break for_loop;
+    if (userNumber==4){
+    x = arrayTracker(userNumber, player1, player2, player3, player4, cardsPlayed);
+    for_loop:
+    for (int i = 0; i< x; i++){
+      count++;
+      if (player4[i] == userInput){
+        toMiddle(count, userNumber, player1, player2, player3, player4, cardsPlayed);
+        break for_loop;
+        }
       }
     }
-  }
-    } // method
+  } // method
 
   /**
     move number to middle
@@ -313,7 +311,6 @@ public class BSCardGame {
       int userNumber = TextIO.getInt();
     }
 
-
     /**
     ask user what card he/she played
     */
@@ -388,7 +385,6 @@ public class BSCardGame {
           player1[i] = cardsPlayed[count];
           count++;
         }
-
       }else if(userNumber==2){
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
@@ -411,7 +407,6 @@ public class BSCardGame {
           count++;
         }
       }
-    }
     }
 
   public static void BSTrue(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
