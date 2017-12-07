@@ -5,7 +5,7 @@ import java.util.Random;
 /**
   Main methods
 */
-public class BSCardGame1 {
+public class BSCardGame {
   public static void main(String[] args){
     Scanner input = new Scanner(System.in);
 
@@ -19,7 +19,7 @@ public class BSCardGame1 {
     boolean turn = true;
 
     printRules();
-    TextIO.putf("Ready to play?");
+    TextIO.putf("Ready to play?%n");
     play = TextIO.getlnBoolean();
 
     shuffle(cardsPlayed);
