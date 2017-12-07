@@ -5,7 +5,7 @@ import java.util.Random;
 /**
   Main methods
 */
-public class BSCardGame1 {
+public class BSCardGame {
   public static void main(String[] args){
     Scanner input = new Scanner(System.in);
 
