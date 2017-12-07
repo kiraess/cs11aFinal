@@ -30,14 +30,9 @@ public class BSCardGame {
         for (int i = 1; i <= 4; i++){
           showCards(i, player1, player2, player3, player4, cardsPlayed);
           chooseCard(i, player1, player2, player3, player4, cardsPlayed);
-<<<<<<< HEAD
           TextIO.putf("What card did you just put in the middle?");
           x = sayCard();
           BScaller(x, i, player1, player2, player3, player4, cardsPlayed);
-=======
-          sayCard();
-          numBSCaller();
->>>>>>> a05d37c7f9500f12f520decb7580249814ed9d65
         }
         nextTurn();
       }
