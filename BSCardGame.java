@@ -32,7 +32,7 @@ public class BSCardGame {
           sayCard();
           numBSCaller();
         }
-        nextTurn(turn);
+        nextTurn();
       }
       winner(userNumber, player1, player2, player3, player4, cardsPlayed);
       playAgain(play);
