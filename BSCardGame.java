@@ -418,36 +418,66 @@ public class BSCardGame {
   public static void BSTrue(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       int x;
       int y;
-      int count=0;
+      int count = 0;
       userNumber=userNumber-1;
       if(userNumber==1){ //player that is called
         x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
         y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-        for(int i=x+1;i<=x+y;i++){
-          player1[i] = cardsPlayed[count];
-          count++;
-        }
+        addCardsBS1(player1, cardsPlayed, count);
       }else if(userNumber==2){
           x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
           y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-          for(int i=x+1;i<=x+y;i++){
-            player2[i] = cardsPlayed[count];
-            count++;
-          }
+          addCardsBS2(player1, cardsPlayed, count);
       }else if(userNumber==3){
           x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
           y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-          for(int i=x+1;i<=x+y;i++){
-            player3[i] = cardsPlayed[count];
-            count++;
-          }
+          addCardsBS3(player1, cardsPlayed, count);
       }else if(userNumber==4){
           x = arrayTracker(1, player1, player2, player3, player4, cardsPlayed);
           y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
-          for(int i=x+1;i<=x+y;i++){
-            player4[i] = cardsPlayed[count];
-            count++;
-          }
+          addCardsBS4(player1, cardsPlayed, count);
       }
     }
+  /**
+  new method to add all the cards to player1
+  */
+  public static void addCardsBS1(int[] player1, int[] cardsPlayed, int count){
+    int count=0;
+    for(int i=x+1;i<=x+y;i++){
+      player1[i] = cardsPlayed[count];
+      count++;
+    }
+  }
+
+  /**
+  new method to add all the cards to player2
+  */
+  public static void addCardsBS2(int[] player2, int[] cardsPlayed, int count){
+    for(int i=x+1;i<=x+y;i++){
+      player2[i] = cardsPlayed[count];
+      count++;
+    }
+  }
+
+  /**
+  new method to add all the cards to player3
+  */
+  public static void addCardsBS3(int[] player3, int[] cardsPlayed, int count){
+    int count=0;
+    for(int i=x+1;i<=x+y;i++){
+      player3[i] = cardsPlayed[count];
+      count++;
+    }
+  }
+
+  /**
+  new method to add all the cards to player4
+  */
+  public static void addCardsBS4(int[] player4, int[] cardsPlayed, int count){
+    int count=0;
+    for(int i=x+1;i<=x+y;i++){
+      player4[i] = cardsPlayed[count];
+      count++;
+    }
+  }
   }//class
