@@ -1,3 +1,8 @@
+/**
+  BSCardGame allows the users to play a card game called Bullshit using this program.
+  This program requires four players to play the game.
+*/
+
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;
@@ -43,7 +48,9 @@ public class BSCardGame {
   }//main
 
   /**
-  asking the user if they are ready for the next turn
+  nextTurn() read the response from the users and moves to the next turn if the
+  users are ready for the next turn
+  @return the boolean the user inputs
   */
   public static boolean nextTurn(){
     TextIO.putf("Now all four of you have played one card. Ready for the next turn?%n");
@@ -52,7 +59,8 @@ public class BSCardGame {
   }
 
   /**
-   Shuffling the elements in cardsPlayed[] with Fisher–Yates shuffle
+   shuffle() shuffles the elements in cardsPlayed[] with Fisher–Yates shuffle
+   @param cardsPlayed[] a String array that contains the cards that are not held by the users
   */
   public static void shuffle(int[] cardsPlayed) {
     int index, temp;
@@ -66,7 +74,12 @@ public class BSCardGame {
   }
 
   /**
-    Distributing 13 elements per player
+    distribute() distributes 13 elements per player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
   */
   public static void distribute(int[] cardsPlayed, int[] player1, int[] player2, int[] player3, int[] player4) {
     for (int i = 0; i<13; i++){
@@ -87,8 +100,15 @@ public class BSCardGame {
   }
 
   /**
-    Show the array of cards
+    showCards() shows the array of cards in each player's hand
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
   */
+
   public static void showCards(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
     int x;
     System.out.println("");
@@ -121,9 +141,16 @@ public class BSCardGame {
   }
 
   /**
-    Chooseing card to putting to middle
-    check if the number is actually in array
+    chooseCard() allows players to choose the cards they want to put to middle
+    it also checks if the chosen cards are in the corresponding array
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
   */
+
   public static void chooseCard(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     Scanner input = new Scanner(System.in);
     System.out.println("");
@@ -142,11 +169,19 @@ public class BSCardGame {
       userInput = input.nextInt();
       checkCard(userInput, 4, player1, player2, player3, player4, cardsPlayed);
     }
-  }
+  }\
+
   /**
-    check if the number is actually in array
-    move the all index down
+    checkCard() checks if the number is actually in the array and move all the index down
+    @param userInput an integer that represents the card that is placed to middle by user
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
   */
+
   public static void checkCard(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int count = 0;
@@ -194,13 +229,21 @@ public class BSCardGame {
         }
       }
     }
-  } // method
+  }
 
   /**
-    move number to middle
+    toMiddle() moves number to middle
     move player elements down
     move middleSet element up
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+    @param count an integer that keeps track of index value of where the first 0 appear in the array to keep track of how many cards are there in the array
   */
+
   public static void toMiddle(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int y;
@@ -241,8 +284,15 @@ public class BSCardGame {
   }
 
   /**
-    Track how many elements are there in the array
+    arrayTracker() tracks how many elements are there in the array
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
   */
+
   public static int arrayTracker(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
     int n = 0;
     if (userNumber==1){
@@ -290,9 +340,17 @@ public class BSCardGame {
     }
 
     /**
-    check if someone wants to call BS
-    if BS is called, then check who calls
+      BScaller() checks if someone wants to call Bullshit
+      and who called the Bullshit, if someone called
+      @param userInput an integer that represents the card that is placed to middle by user
+      @param userNumber an integer that represents the position of each player
+      @param cardsPlayed[] a String array that contains the cards that are not held by the users
+      @param player1[] a String array that contains the cards that are held by player1
+      @param player2[] a String array that contains the cards that are held by player2
+      @param player3[] a String array that contains the cards that are held by player3
+      @param player4[] a String array that contains the cards that are held by player4
     */
+
   public static void BScaller(int say, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       int caller;
       TextIO.putf("Call Bullshit?%n");
@@ -304,8 +362,8 @@ public class BSCardGame {
     }
 
     /**
-    check who calls BS
-    determines who gets the card
+    numBScaller() gets who called Bullshit
+    @return the player's number who called Bullshit
     */
   public static int numBSCaller(){
       int x;
@@ -315,12 +373,17 @@ public class BSCardGame {
     }
 
     /**
-    ask user what card he/she played
+    sayCard() asks user what card he/she claimed he/she played
+    @return the card's number the user claimed he/she played
     */
   public static int sayCard(){
       int sayCard = TextIO.getInt();
       return sayCard;
     }
+
+    /**
+    printRules() prints out the instructions of the game
+    */
 
   public static void printRules(){
       TextIO.putf("Welcome to the world of Bullshit - the best game you will ever play %n");
@@ -338,6 +401,14 @@ public class BSCardGame {
       TextIO.putf("The winner will be whoever run out the cards first.%n");
       TextIO.putf("Good luck!!%n");
     }
+
+    /**
+      winner() checks if there is a winner in the game
+      @param player1[] a String array that contains the cards that are held by player1
+      @param player2[] a String array that contains the cards that are held by player2
+      @param player3[] a String array that contains the cards that are held by player3
+      @param player4[] a String array that contains the cards that are held by player4
+    */
 
   public static void winner(int[] player1, int[] player2, int[] player3, int[] player4){
       for (int i = 1; i < 5; i++){
@@ -361,12 +432,26 @@ public class BSCardGame {
       }
     }
 
+    /**
+    playAgain() asks if the user wants to play the game again
+    */
+
   public static boolean playAgain(boolean play){
       TextIO.putf("Do you wanna play a new game?");
       play = TextIO.getlnBoolean();
       return play;
     }
 
+    /**
+      checkBS() checks if the call of Bullshit is effective or not
+      @param caller an integer that shows which player called the Bullshit
+      @param say an integer that represents the card that the play claimed it to be
+      @param cardsPlayed[] a String array that contains the cards that are not held by the users
+      @param player1[] a String array that contains the cards that are held by player1
+      @param player2[] a String array that contains the cards that are held by player2
+      @param player3[] a String array that contains the cards that are held by player3
+      @param player4[] a String array that contains the cards that are held by player4
+    */
   public static void checkBS(int caller, int say, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       int y;
       y = arrayTracker(0, player1, player2, player3, player4, cardsPlayed);
@@ -377,6 +462,17 @@ public class BSCardGame {
       }
     }
 
+
+    /**
+      BSFalse() shows what happens when a Bullshit call is ineffective
+      The caller gets all the cards from middle
+      @param userNumber an integer that represents the position of each player
+      @param cardsPlayed[] a String array that contains the cards that are not held by the users
+      @param player1[] a String array that contains the cards that are held by player1
+      @param player2[] a String array that contains the cards that are held by player2
+      @param player3[] a String array that contains the cards that are held by player3
+      @param player4[] a String array that contains the cards that are held by player4
+    */
   public static void BSFalse(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       System.out.println("You are wrong! It wasn't a lie!");
       int x;
@@ -413,6 +509,16 @@ public class BSCardGame {
       }
     }
 
+    /**
+      BSTrue() shows what happens when a Bullshit call is effective
+      The player who is called gets all the cards from middle
+      @param userNumber an integer that represents the position of each player
+      @param cardsPlayed[] a String array that contains the cards that are not held by the users
+      @param player1[] a String array that contains the cards that are held by player1
+      @param player2[] a String array that contains the cards that are held by player2
+      @param player3[] a String array that contains the cards that are held by player3
+      @param player4[] a String array that contains the cards that are held by player4
+    */
   public static void BSTrue(int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
       System.out.println("You are right! It was a lie!");
       int x;
