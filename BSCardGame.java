@@ -121,6 +121,14 @@ public class BSCardGame1 {
     }
   }
 
+  /**
+    showCards1() shows the array of cards in player1's hand
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void showCards1(int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
     int x;
     System.out.println("Player 1:");
@@ -130,6 +138,14 @@ public class BSCardGame1 {
     }
   }
 
+  /**
+    showCards2() shows the array of cards in player2's hand
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void showCards2(int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
     int x;
     System.out.println("Player 2:");
@@ -139,6 +155,14 @@ public class BSCardGame1 {
     }
   }
 
+  /**
+    showCards3() shows the array of cards in player3's hand
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void showCards3(int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
     int x;
     System.out.println("Player 3:");
@@ -148,6 +172,14 @@ public class BSCardGame1 {
     }
   }
 
+  /**
+    showCards4() shows the array of cards in player4's hand
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void showCards4(int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed) {
     int x;
     System.out.println("Player 4:");
@@ -212,6 +244,16 @@ public class BSCardGame1 {
     }
   } // method
 
+  /**
+    checkCard1() checks if the number is actually in the array of player1 and move all the index down
+    @param userInput an integer that represents the card that is placed to middle by user
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void checkCard1(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int count = 0;
@@ -225,7 +267,16 @@ public class BSCardGame1 {
         }
       }
   }
-
+  /**
+    checkCard2() checks if the number is actually in the array of player2 and move all the index down
+    @param userInput an integer that represents the card that is placed to middle by user
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void checkCard2(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int count = 0;
@@ -240,6 +291,16 @@ public class BSCardGame1 {
       }
   }
 
+  /**
+    checkCard3() checks if the number is actually in the array of player3 and move all the index down
+    @param userInput an integer that represents the card that is placed to middle by user
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void checkCard3(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int count = 0;
@@ -254,6 +315,16 @@ public class BSCardGame1 {
       }
   }
 
+  /**
+    checkCard4() checks if the number is actually in the array of player4 and move all the index down
+    @param userInput an integer that represents the card that is placed to middle by user
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void checkCard4(int userInput, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int count = 0;
@@ -292,6 +363,18 @@ public class BSCardGame1 {
     }
   }
 
+  /**
+    toMiddle1() moves the card player1 played to middle
+    move player1's elements down
+    move middleSet element up
+    @param count an integer that keeps track of index value of where the first 0 appear in the array to keep track of how many cards are there in the array
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void toMiddle1(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int y;
@@ -305,6 +388,18 @@ public class BSCardGame1 {
     player1[x-1] = 0;
   }
 
+  /**
+    toMiddle2() moves the card player2 played to middle
+    move player2's elements down
+    move middleSet element up
+    @param count an integer that keeps track of index value of where the first 0 appear in the array to keep track of how many cards are there in the array
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void toMiddle2(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int y;
@@ -318,6 +413,18 @@ public class BSCardGame1 {
     player2[x-1] = 0;
   }
 
+  /**
+    toMiddle3() moves the card player3 played to middle
+    move player3's elements down
+    move middleSet element up
+    @param count an integer that keeps track of index value of where the first 0 appear in the array to keep track of how many cards are there in the array
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void toMiddle3(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int y;
@@ -331,6 +438,18 @@ public class BSCardGame1 {
     player3[x-1] = 0;
   }
 
+  /**
+    toMiddle4() moves the card player1 played to middle
+    move player4's elements down
+    move middleSet element up
+    @param count an integer that keeps track of index value of where the first 0 appear in the array to keep track of how many cards are there in the array
+    @param userNumber an integer that represents the position of each player
+    @param cardsPlayed[] a String array that contains the cards that are not held by the users
+    @param player1[] a String array that contains the cards that are held by player1
+    @param player2[] a String array that contains the cards that are held by player2
+    @param player3[] a String array that contains the cards that are held by player3
+    @param player4[] a String array that contains the cards that are held by player4
+  */
   public static void toMiddle4(int count, int userNumber, int[] player1, int[] player2, int[] player3, int[] player4, int[] cardsPlayed){
     int x;
     int y;
