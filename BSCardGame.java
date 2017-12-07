@@ -21,10 +21,11 @@ public class BSCardGame1 {
     TextIO.putf("Ready to play?");
     play = TextIO.getlnBoolean();
 
-    shuffle(cardsPlayed);
-    distribute(cardsPlayed, player1, player2, player3, player4);
-
     do{
+      shuffle(cardsPlayed);
+      distribute(cardsPlayed, player1, player2, player3, player4);
+      TextIO.putf("Ready to take turns?");
+      boolean turn = TextIO.getlnBoolean();
       while(turn==true){
         for (int i = 1; i <= 4; i++){
           showCards(i, player1, player2, player3, player4, cardsPlayed);
